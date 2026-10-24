@@ -1,310 +1,171 @@
 # SmartSpend — Smart Expense Tracker & Personal Money Management System
 
-[![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://www.php.net/)
-[![Database](https://img.shields.io/badge/MySQL-8.0%2F%20MariaDB-orange.svg)](https://www.mysql.com/)
+[![React Version](https://img.shields.io/badge/React-18.3-blue.svg)](https://react.dev/)
+[![Vite Version](https://img.shields.io/badge/Vite-6.0-purple.svg)](https://vitejs.dev/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-4.4-orange.svg)](https://www.chartjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Interface](https://img.shields.io/badge/UI-Dark%20Financial%20SaaS-indigo.svg)](#)
 
-> **A financial application built to help users make smarter financial decisions, not just record numbers.**
+> **A modern, intelligent personal finance web application built in React to help users make smarter financial decisions, plan salary capacity, monitor recurring commitments, and achieve their savings goals.**
 
 ---
 
 ## 🌟 Executive Overview
 
-Most traditional expense trackers merely show users what they have already spent. **SmartSpend** is a personal financial management system designed to answer critical forward-looking questions:
+Most traditional expense trackers merely show users what they have already spent. **SmartSpend** is a forward-looking personal financial management platform built to answer critical financial questions:
 
-1. **How much money did I earn and where is it going?**
-2. **How much money should I realistically save based on my income?**
+1. **How much did I earn and where is every rupee going?**
+2. **How much should I realistically save based on my salary?**
 3. **What is my safe daily discretionary spending allowance?**
-4. **Which bills must I pay this month and are any overdue?**
+4. **Which bills are due soon, today, or overdue?**
 5. **Will I have enough money for upcoming obligations?**
 6. **"Can I Afford This?"** — Can I buy a ₹15,000 gadget today without harming upcoming bills or draining my emergency fund?
 
-SmartSpend combines salary-based financial capacity planning, recurring bill scheduling, atomic bill payment recording, goal milestone tracking, deterministic behavioral insights, and an interactive affordability calculator into a clean SaaS dashboard.
+SmartSpend combines salary-based financial capacity planning, recurring bill scheduling, atomic bill payment recording, goal milestone tracking, deterministic behavioral insights, and an interactive affordability calculator into a clean, modern SaaS dashboard.
+
+---
+
+## 🚀 Live Local Execution (How to See the Output)
+
+### Quick Start:
+```bash
+# 1. Open your terminal in the project directory
+cd "c:\Users\kiran\Desktop\EXPENSS TRACKER PROJECT"
+
+# 2. Start the Vite development server
+npm run dev
+```
+
+### View in Browser:
+Open your browser and navigate to:
+```
+http://localhost:5173/
+```
+*(The dev server is currently running and live!)*
 
 ---
 
 ## 🛠 Technology Stack
 
-- **Frontend**: HTML5, CSS3 (Modern Dark SaaS Theme with CSS Variables), Vanilla JavaScript (No heavyweight frameworks or node dependencies).
-- **Backend**: Modular PHP 8.2+ Architecture (Clean Separation of Concerns: Config, Includes, Services, Actions, and Views).
-- **Database**: MySQL / MariaDB via PHP Data Objects (**PDO**) with strict prepared statements, foreign keys, and ACID transactions.
-- **Visualizations**: [Chart.js 4.4+](https://www.chartjs.org/) (Income vs. Expense, Category Doughnut, 6-Month Trajectory, Budget vs. Actual).
-- **Icons & Typography**: [Lucide Icons](https://lucide.dev/) and Google Fonts [Inter](https://fonts.google.com/specimen/Inter).
-- **Environment**: Compatible with Windows XAMPP, WampServer, Laragon, or standalone Apache/Nginx + PHP.
+- **Frontend Framework**: [React 18.3](https://react.dev/) with hooks (`useContext`, `useMemo`, `useState`, `useEffect`).
+- **Build Tool & Dev Server**: [Vite 6.0](https://vitejs.dev/) with lightning-fast HMR and optimized production bundling.
+- **State Management & Persistence**: React Context API (`AppContext`) backed by persistent browser `localStorage`.
+- **Financial Visualizations**: [Chart.js 4.4+](https://www.chartjs.org/) & [react-chartjs-2](https://react-chartjs-2.js.org/) (Income vs Expense bar charts, category breakdown doughnuts, 6-month trajectory lines, budget variance bars).
+- **Icons & Typography**: [Lucide React](https://lucide.dev/) and Google Fonts [Inter](https://fonts.google.com/specimen/Inter).
+- **Styling**: Custom modern dark financial SaaS design system (`src/index.css`) with CSS custom properties, responsive grid layouts, and mobile drawer navigation.
 
 ---
 
-## 🎯 Key Application Modules & Features
+## 🎯 Key Features & Modules
 
 ### 1. 5-Step Financial Onboarding Wizard
-- Collects income details, pay day of month, fixed vs. variable income nature.
-- Records monthly living commitment estimates (rent, food, electricity, transport, loans).
-- Selects savings style: **Conservative** (10%), **Balanced** (20%), or **Ambitious** (30%+).
-- Automatically calculates and presents a preliminary financial plan before launching the dashboard.
+- Collects income details, salary credit day, and opening cash reserves.
+- Estimates non-negotiable living commitments (rent, food, electricity, transport, loans).
+- Sets savings targets: **Conservative** (10%), **Balanced** (20%), or **Ambitious** (30%+).
+- Transparently demonstrates the capacity equation before launching the dashboard.
 
 ### 2. Comprehensive Financial Dashboard
-- **8 Core Financial Metrics Cards**: Total Income, Total Expenses, Account Cash Balance, Planned Savings Target, Actual Savings Contributions, Upcoming Bills Total, Remaining Flexible Budget, and Budget Usage Percentage.
-- **5 Dynamic Chart.js Visualizations**: Real-time category doughnut, 6-month trends, income vs. expense comparison, and category budget variances.
-- **Upcoming Bills Widget**: Visual urgency badges (*Due Today, Due Soon, Overdue*) with 1-click payment recording.
-- **Deterministic Financial Insights**: Data-driven behavioral recommendations based on apples-to-apples period comparisons.
+- **8 Core Financial Metric Cards**: Total Income, Total Expenses, Account Cash Balance, Planned Savings Target, Actual Savings Contributions, Upcoming Bills Total, Remaining Flexible Budget, and Budget Usage Percentage.
+- **5 Dynamic Chart.js Visualizations**: Income vs. Expense bar chart, category doughnut, 6-month historical trajectory line, and budget utilization bars.
+- **Upcoming Bills Widget**: Visual urgency badges (*Due Today, Due Soon, Overdue*) with 1-click modal payment recording.
+- **Actionable Financial Insights**: Transparent recommendations alerting on discretionary burn rates and category spending surges.
 
-### 3. Smart Salary-Based Money Management Engine
-- **Transparent Mathematical Capacity Formula**:
-  $$\text{Projected Flexible Spending} = \text{Expected Income} - \text{Essential Costs} - \text{Unpaid Separate Bills} - \text{Planned Savings}$$
-- **Zero Double-Counting**: Automatically prevents subtracting bills twice if their parent category is already budgeted.
-- **Safe Daily Discretionary Allowance**: Dynamically computes how much the user can spend per day across remaining days in the budget period.
-- **Category Budgets**: Configurable monthly spending limits with color-coded utilization progress bars.
+### 3. Smart Salary-Based Capacity Planner
+- **Transparent Mathematical Equation**:
+  $$\text{Flexible Capacity} = \text{Monthly Income} - \text{Essential Commitments} - \text{Separate Unpaid Bills} - \text{Planned Savings}$$
+- **Zero Double-Counting**: Automatically protects against subtracting bills twice if their category is already budgeted.
+- **Safe Daily Discretionary Allowance**: Dynamically calculates how much you can spend per day across remaining days in the cycle.
+- **Category Budgets**: Configurable monthly spending limits with color-coded utilization progress bars and 1-click recommended auto-allocation.
 
 ### 4. Recurring Bills & Payment Management
-- Supports **weekly, monthly, bi-monthly, quarterly, half-yearly, and yearly** frequencies.
-- **Intelligent Month-End Date Preservation**: Correctly handles bills due on the 31st during shorter months (February 28/29, April 30) without losing the original intended due day.
-- **Atomic Payment Processing**: Recording a bill payment runs within a database transaction, logs payment history, updates next recurrence, and creates exactly one linked expense transaction. Prevents duplicate payments for the same cycle.
+- Supports **weekly, monthly, quarterly, and yearly** frequencies.
+- **Month-End Date Preservation**: Correctly handles bills due on the 31st across shorter months (February 28/29, April 30) without losing the original target day.
+- **Atomic Payment Processing**: Recording a payment updates payment history, advances next due date, and automatically records a linked expense transaction.
 
 ### 5. Interactive Monthly Bill Calendar
-- Full calendar view with due dates plotted on day cells.
-- Highlights paid vs. unpaid bills and gives immediate access to payment actions.
+- Full month grid displaying bills plotted on their exact due dates.
+- Visual markers for paid vs. unpaid status with quick payment modal access.
 
 ### 6. "Can I Afford This?" Purchase Calculator
 - Analyzes proposed purchases against:
-  1. Current liquid cash reserve.
-  2. Upcoming unpaid bills due in the current period.
+  1. Current liquid bank balance.
+  2. Upcoming unpaid bills due this month.
   3. Remaining flexible spending allowance.
-  4. Active monthly savings goals.
-- Provides a clear evaluation verdict (*Comfortably Affordable*, *Budget Tight*, or *Not Recommended*).
-- Delivers practical alternatives: 3-month savings plan, waiting until the next salary cycle, or cutting non-essential spending.
+  4. Active savings goals.
+- Provides a clear evaluation verdict (*Affordable*, *Tight Budget*, or *Risky / Not Recommended*).
+- Formulates 3 actionable alternatives: installment pacing, waiting for the next salary cycle, or cutting non-essential spending.
 
 ### 7. Smart Savings Goals Tracker
-- Set financial milestones (e.g. Emergency Fund, Laptop, Travel).
-- Automatically computes required monthly deposits: $\lceil(\text{Target} - \text{Saved}) / \text{Months Left}\rceil$.
-- Supports deposit and withdrawal logging with complete audit trail.
+- Set financial milestones (e.g., Emergency Safety Fund, MacBook Pro, Vacation).
+- Computes required monthly deposit pace: $\lceil(\text{Target} - \text{Saved}) / \text{Months Left}\rceil$.
+- Supports deposit and withdrawal tracking with a complete audit trail.
 
 ### 8. Financial Insights & Subscription Auditor
-- Compares equivalent elapsed periods (e.g., first 24 days of current month vs. first 24 days of last month) to detect category surges ($\ge 20\%$).
-- Dedicated subscription auditor to identify recurring digital memberships and quantify their annual burden.
+- **Apples-to-Apples Period Comparison**: Compares Day 1–N of current month with Day 1–N of previous month to identify spending surges ($\ge 20\%$).
+- **Subscription Auditor**: Automatically detects recurring digital entertainment and memberships, quantifying their total annual drain.
 
 ### 9. Filterable Ledger, Reports & CSV Export
-- Search, filter by type, category, payment method, and custom date ranges.
-- Safe CSV export with UTF-8 BOM encoding for seamless Excel compatibility.
+- Search transactions by description, type, category, payment method, and date ranges.
+- Direct in-browser CSV report generation and download.
+- Print / Save as PDF capability formatted for financial statements.
 
-### 10. Persistent Notification Center & Background Worker
-- Automated reminders triggered 7 days, 3 days, 1 day, on the due date, and when overdue.
-- Unique hash keys prevent duplicate reminder generation.
-- Includes a standalone command-line background worker (`cron/process_bill_reminders.php`).
-
----
-
-## 🔒 Security Architecture
-
-- **Password Hashing**: Secure bcrypt using `password_hash()` and `password_verify()`.
-- **Prepared Statements**: Strict PDO parameterized queries across all database operations.
-- **CSRF Defense**: Cryptographic random tokens validated on all state-changing `POST` requests and AJAX actions.
-- **XSS Mitigation**: Strict sanitization and `htmlspecialchars()` output escaping.
-- **Session Protection**: Session ID regeneration upon login (`session_regenerate_id(true)`) with `HttpOnly` and `SameSite=Lax` cookie flags.
-- **Data Isolation**: Strict multi-tenant isolation where all SQL operations verify `WHERE user_id = :uid`.
+### 10. Persistent Notification Center
+- Real-time notification badge for overdue bills, upcoming payments, and budget surge warnings.
+- Mark as read, mark all read, and quick links to resolve alerts.
 
 ---
 
-## 📁 Project Directory Structure
+## 📁 Project Architecture
 
-```text
+```
 smartspend/
-│
-├── index.php                      # Application entry point & router
-├── login.php                      # User authentication with demo quick-fill
-├── register.php                   # Account creation & password hashing
-├── logout.php                     # Secure session termination
-├── onboarding.php                 # 5-step financial onboarding wizard
-├── dashboard.php                  # Master dashboard with 8 KPI cards & charts
-│
-├── transactions.php               # Transaction ledger, search, filters & pagination
-├── smart_budget.php               # Salary-based budget & capacity manager
-├── bills.php                      # Recurring bills & payment recording
-├── bill_calendar.php              # Monthly visual bill calendar
-├── savings_goals.php              # Goal milestones & contribution logs
-├── affordability_calculator.php   # Dedicated "Can I Afford This?" calculator
-├── insights.php                   # Behavioral spending analysis & subscription audit
-├── reports.php                    # Financial performance summaries & analytics
-├── categories.php                 # System default & custom category manager
-├── settings.php                   # User profile, currency & salary cycle settings
-├── notifications.php              # Persistent alert center
-│
-├── config/
-│   └── database.php               # PDO database connection configuration
-│
-├── includes/
-│   ├── auth.php                   # Session & authentication helpers
-│   ├── csrf.php                   # CSRF token generator & request guards
-│   ├── functions.php              # Currency formatting, sanitization, flash alerts
-│   ├── header.php                 # Responsive navigation & notification bell
-│   ├── sidebar.php                # Left sidebar with 10 nav modules
-│   └── footer.php                 # Global modals & script initialization
-│
-├── services/
-│   ├── FinancialCalculations.php  # Mathematical aggregation & cash balance engine
-│   ├── BudgetPlanner.php          # Salary planning, flexible spending & affordability
-│   ├── BillRecurrence.php         # Recurrence date logic & atomic bill payments
-│   ├── NotificationService.php    # Reminder engine with duplicate prevention
-│   └── FinancialInsights.php      # Deterministic equivalent-period analysis
-│
-├── actions/
-│   ├── transaction_actions.php    # CRUD operations & CSV export
-│   ├── bill_actions.php           # Bill creation, deletion & payment handling
-│   ├── budget_actions.php         # Category budget updates & auto-recommendations
-│   ├── savings_actions.php        # Goal CRUD & contribution logging
-│   ├── category_actions.php       # Custom category creation & validation
-│   ├── settings_actions.php       # Profile, password & preference updates
-│   ├── notification_actions.php   # Mark read & mark all read handlers
-│   └── calculator_actions.php     # AJAX endpoint for affordability evaluation
-│
-├── cron/
-│   └── process_bill_reminders.php # CLI script for Windows Task Scheduler
-│
-├── assets/
-│   ├── css/
-│   │   ├── style.css              # Design system variables, cards, forms, tables
-│   │   └── dashboard.css          # KPI grid, charts layout, progress bars
-│   └── js/
-│       ├── app.js                 # Modals, drawer, AJAX forms, Lucide init
-│       └── charts.js              # Chart.js dark-themed visualizers
-│
-├── database.sql                   # Complete MySQL database schema & seed categories
-├── demo_seed.sql                  # Standalone demo data SQL file
-├── seed_demo.php                  # Web/CLI interactive demo data seeder
-├── .gitignore                     # Git exclusion rules
-├── LICENSE                        # MIT License
-└── README.md                      # Comprehensive project documentation
+├── index.html                   # HTML5 entry point with Inter font & dark theme
+├── package.json                 # Project dependencies and scripts
+├── vite.config.js               # Vite configuration with auto-port & host enabled
+├── dist/                        # Production build output
+└── src/
+    ├── main.jsx                 # React root DOM renderer
+    ├── App.jsx                  # Main application layout and view router
+    ├── index.css                # Financial SaaS dark design system & CSS variables
+    ├── context/
+    │   └── AppContext.jsx       # Global application state, persistence & demo data
+    ├── services/
+    │   ├── budgetEngine.js      # Salary capacity formula & purchase evaluator
+    │   ├── calculations.js      # Cash flow, balances, category breakdown & trajectory
+    │   ├── recurrence.js        # Next due date, leap-year & month-end preservation
+    │   └── insightsEngine.js    # Apples-to-apples surge detector & subscription auditor
+    ├── components/
+    │   ├── Sidebar.jsx          # Desktop navigation & mobile drawer
+    │   ├── Header.jsx           # Top navbar, notification dropdown & quick actions
+    │   ├── QuickTransactionModal.jsx  # Expense/Income entry modal
+    │   ├── AffordabilityModal.jsx     # "Can I Afford This?" interactive modal
+    │   └── PayBillModal.jsx           # Atomic bill payment confirmation modal
+    └── views/
+        ├── DashboardView.jsx    # 8 KPI cards, 4 Chart.js charts, recent widgets
+        ├── TransactionsView.jsx # Ledger table, filters, pagination, CSV download
+        ├── SmartBudgetView.jsx  # Capacity formula bar, daily allowance, category limits
+        ├── BillsView.jsx        # Recurring bills overview, overdue cards, add bill modal
+        ├── CalendarView.jsx     # Monthly calendar with bills plotted on due dates
+        ├── SavingsGoalsView.jsx # Savings milestones, progress bars, deposit modal
+        ├── AffordabilityView.jsx# Dedicated purchase affordability calculator view
+        ├── InsightsView.jsx     # Behavioral analytics, surge comparison, subscription audit
+        ├── ReportsView.jsx      # Financial statements, category breakdown, PDF/CSV export
+        ├── CategoriesView.jsx   # Expense/Income category manager & custom creator
+        ├── SettingsView.jsx     # Profile, currency selector (₹, $, €, £), demo reset
+        ├── NotificationsView.jsx# Notification center with read/unread filter
+        └── OnboardingView.jsx   # 5-step interactive onboarding wizard
 ```
 
 ---
 
-## 🚀 Installation & Setup Guide (XAMPP on Windows)
+## 💻 Available Scripts
 
-### Prerequisites
-1. Install [XAMPP](https://www.apachefriends.org/) (Version with PHP 8.2 or later).
-2. Ensure **Apache** and **MySQL** modules are started in the XAMPP Control Panel.
-
-### Step 1: Place Project in Web Root
-Clone or copy this project folder into your XAMPP `htdocs` directory:
-```text
-C:\xampp\htdocs\smartspend
-```
-
-### Step 2: Create Database & Import Schema
-1. Open your browser and navigate to **phpMyAdmin**:
-   ```text
-   http://localhost/phpmyadmin/
-   ```
-2. Click on the **SQL** tab and execute the contents of [`database.sql`](database.sql), or import the file directly.
-3. This creates the database `smartspend` with all required tables, foreign keys, indexes, and initial system categories.
-
-### Step 3: Populate Demo Data (Optional but Recommended)
-To immediately test the application with realistic data (income, bills, budgets, goals, transactions):
-- **Option A (Web)**: Open your browser to:
-  ```text
-  http://localhost/smartspend/seed_demo.php
-  ```
-- **Option B (phpMyAdmin)**: Import [`demo_seed.sql`](demo_seed.sql) into the `smartspend` database.
-
-**Demo Credentials**:
-- **Email**: `demo@smartspend.io`
-- **Password**: `password123`
-
-### Step 4: Access the Application
-Open your browser and navigate to:
-```text
-http://localhost/smartspend/
-```
+- `npm run dev`: Starts the Vite development server at `http://localhost:5173/`.
+- `npm run build`: Compiles optimized production bundle into `dist/`.
+- `npm run preview`: Locally previews the production build.
 
 ---
 
-## ⏰ Automated Background Reminders (Windows Task Scheduler)
+## 📝 License
 
-SmartSpend includes a standalone CLI processor [`cron/process_bill_reminders.php`](cron/process_bill_reminders.php) that checks for upcoming and overdue bills and generates notifications without requiring the user to have a browser open.
-
-### Setting up a Daily Windows Task:
-1. Press `Win + R`, type `taskschd.msc`, and press **Enter**.
-2. Click **Create Basic Task** in the Actions pane.
-3. **Name**: `SmartSpend Bill Reminder Worker`.
-4. **Trigger**: Select **Daily** (e.g., 8:00 AM).
-5. **Action**: Select **Start a program**.
-6. **Program/script**: Path to your PHP executable, for example:
-   ```text
-   C:\xampp\php\php.exe
-   ```
-7. **Add arguments**:
-   ```text
-   "C:\xampp\htdocs\smartspend\cron\process_bill_reminders.php"
-   ```
-8. Click **Finish**.
-
-*(Note: SmartSpend also automatically checks and generates missed reminders whenever a user logs in or visits their dashboard).*
-
----
-
-## 📊 Database Schema Overview
-
-```mermaid
-erDiagram
-    users ||--o{ user_settings : "has settings"
-    users ||--o{ opening_balances : "has opening balance"
-    users ||--o{ categories : "creates custom"
-    users ||--o{ transactions : "records"
-    users ||--o{ recurring_bills : "manages"
-    users ||--o{ bill_payments : "makes payments"
-    users ||--o{ budgets : "defines limits"
-    users ||--o{ savings_goals : "tracks"
-    users ||--o{ savings_contributions : "deposits"
-    users ||--o{ notifications : "receives"
-
-    recurring_bills ||--o{ bill_payments : "tracks occurrence"
-    recurring_bills ||--o{ notifications : "triggers"
-    savings_goals ||--o{ savings_contributions : "logs history"
-    categories ||--o{ transactions : "classifies"
-    categories ||--o{ budgets : "allocates"
-    categories ||--o{ recurring_bills : "categorizes"
-```
-
----
-
-## 🧪 Testing Verification Checklist
-
-- [x] **Registration & Login**: Secure password hashing, session regeneration, validation error states.
-- [x] **Data Isolation**: Multi-tenant database queries enforce `user_id = :uid`.
-- [x] **5-Step Onboarding**: Saves initial financial commitments, opening balance, and sets up preliminary budgets.
-- [x] **Calculations & Cash Flow**: Accurately computes remaining flexible budget, daily discretionary limit, and net flow without double-counting.
-- [x] **Recurring Bill Scheduling**: Next due date calculation handles month-end dates (e.g. 31st) and leap years.
-- [x] **Atomic Payment Recording**: Bill payments create an expense transaction and advance recurrence atomically inside a DB transaction.
-- [x] **Affordability Calculator**: Accurately checks liquid balance, upcoming bills, and discretionary budgets, providing constructive alternatives.
-- [x] **CSV Exports**: Safely generated with UTF-8 BOM encoding.
-- [x] **Responsive Layout**: Desktop sidebar seamlessly collapses into a mobile slide-out drawer on smaller screens.
-
----
-
-## 📤 Uploading to GitHub
-
-To publish this project to your GitHub profile:
-
-```bash
-# 1. Initialize git repository
-git init
-
-# 2. Add all files
-git add .
-
-# 3. Create initial commit
-git commit -m "feat: complete SmartSpend financial management application"
-
-# 4. Link your remote GitHub repository
-git remote add origin https://github.com/YOUR_USERNAME/smartspend.git
-
-# 5. Push to main branch
-git branch -M main
-git push -u origin main
-```
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - open for educational, personal, and portfolio usage.

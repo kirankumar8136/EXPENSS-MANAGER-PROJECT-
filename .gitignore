@@ -1,28 +1,13 @@
-# SmartSpend .gitignore
-
-# Environment & local credentials
-.env
-.env.local
-config/local.php
-
-# Operating System Files
+node_modules
+dist
+dist-ssr
+*.local
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE & Editor files
-.idea/
-.vscode/
 *.suo
-*.user
-*.workspace
-
-# Log files
-*.log
-error_log
-logs/
-
-# Cache & Temporary uploads
-cache/
-tmp/
-*.tmp
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
